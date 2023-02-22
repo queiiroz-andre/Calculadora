@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+  <style>
+    body {
+      background-color: #F2F2F2;
+    }
+    h1 {
+  text-align: center;
+  font-size: 48px;
+  margin: 40px 0;
+}
+
+form {
+  background-color: #EFEFEF;
+  border: 1px solid #CCCCCC;
+  border-radius: 10px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+label {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+input[type="number"] {
+  width: 100%;
+  height: 50px;
+  font-size: 32px;
+  text-align: right;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #FFFFFF;
+}
+
+select {
+  width: 100%;
+  height: 50px;
+  font-size: 32px;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+}
+
+button {
+  width: 100%;
+  height: 60px;
+  font-size: 32px;
+  border: none;
+  border-radius: 30px;
+  margin-top: 20px;
+  background-color: #FF9500;
+  color: white;
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 32px;
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+<h1>Calculator</h1>
+<form method="post" action="/calculate">
+  <div>
+    <label for="number1">Insira o primeiro número:</label>
+    <input type="number" id="number1" name="number1" required />
+  </div>
+  <div>
+    <label for="number2">Insira o segundo número:</label>
+    <input type="number" id="number2" name="number2" required />
+  </div>
+  <div>
+    <label for="operation">Operação:</label>
+    <select id="operation" name="operation">
+      <option value="add">+</option>
+      <option value="subtract">-</option>
+      <option value="multiply">×</option>
+      <option value="divide">÷</option>
+    </select>
+  </div>
+  <button type="submit">=</button>
+</form>
+<div th:if="${result != null}">
+  <h2 th:text="'Resultado: ' + ${result}"></h2>
+</div>
+</body>
+</html>
